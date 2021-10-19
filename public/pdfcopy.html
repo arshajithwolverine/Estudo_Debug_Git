@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=.40">
+    <title>PDF Viewer</title>
+    <script src="https://use.fontawesome.com/e3eed65b04.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="top-bar" >
+
+        <button class="btn" id="prev-page">
+            <i class="fas fa-arrow-circle-left"></i>Prev Page
+        </button>
+        <button class="btn" id="next-page">
+            Next Page<i class="fas fa-arrow-circle-right"></i>
+        </button>
+        <span class="page-info">
+            Page <span id="page-num"></span> of <span id="page-count"></span>
+        </span>
+    </div>
+    <div style="text-align: center;width: 100%;display: block;" id="pdfdiv">
+        <!-- <canvas id="pdf-render" style="margin-top: 30px;"></canvas> -->
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Admin</title>
+  </head>
+  <body style="background-color: lightgrey;">
+
+    <div class="header pb-6" style="background-color: grey;">
+        <div class="container-fluid">
+          <div class="header-body">
+            <div class="row align-items-center py-4">
+                <nav class="navbar navbar-light ">
+                    <a class="navbar-brand" href="#">
+                      <h3><img src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+                      BlockChain Explorer
+                      </h3>
+                    </a>
+                  </nav>
+            </div>
+  
+        
+  
+  
+  
+  
+          </div>
+        </div>
+  
+        
+      </div>
+    <div class="container" style="margin-top: 5%;">
+        
+        <div  id="BlockChain">
+            <h5>Blockchain </h5>
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Index</th>
+                    <th scope="col">Hash</th>
+                    <th scope="col">Timestamp</th>
+                    <th scope="col">Nonce</th>
+                </tr>
+                </thead>
+                <tbody style="background-color: white;" id="BlockChainTable">
+                <tr>
+                    <th scope="row">0</th>
+                    <td style="cursor: pointer;" onclick="showblock(0)"><u>Genius Block</u></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+                </tbody>
+            </table>
+        </div>
+
+        <div  id="Block">
+            
+        </div>
+
+
+      </div>
+      
+    </body>
+
+    <script>
+              var BlockChain;
+            document.addEventListener('DOMContentLoaded',async function() {
+
+                //InsertInto BlockChain Array
+
+                await fetch('./blockchain.json').then(async doc => doc.json()).then(results => {
+                    BlockChain=results;
+                    console.log(results)
+                })
+                console.log("results")
+
+                //ShowBlockChain
+                
+                // BlockChain.forEach(element => {
+                //     DisplayBlockTable(element);
+                // });
+
+            })
+
+            function DisplayBlockTable(element){
+                add=`
+                <tr>
+                    <th scope="row">${element.index}</th>
+                    <td style="cursor: pointer;" onclick="showblock(${element.index})"><u>${element.hash}</u></td>
+                    <td>${element.timestamp}</td>
+                    <td>${elemet.nonce}</td>
+                </tr>
+                `;
+                document.getElementById('BlockChainTable').insertAdjacentHTML('beforeend', add);
+            }
+
+
+            function showblock(index){
+                document.getElementById('BlockChain').style.display="none";
+                document.getElementById('Block').style.display="block";
+
+                element = BlockChain[index];
+
+                document.getElementById('Block').innerHTML=`
+                
+                <div >
+                    <h4>Block Contents</h4>
+                    <h6>Hash : ${element.hash}   Timestamp : ${element.timestamp}   Nonce : ${element.nonce}</h6>
+                </div>
+                <h5>Transcation Table :- <button type="button" class="btn btn-secondary" onclick="showBlockchain()" style="float: right;margin-bottom: 2%;">Goto Main Table</button></h5>
+                <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">idHash</th>
+                    <th scope="col">Timestamp</th>
+                    <th scope="col">Signature</th>
+                </tr>
+                </thead>
+                <tbody style="background-color: white;" id="TranscationTable">
+                
+                
+                </tbody>
+                </table>
+                
+                `;
+
+                element.transactions.forEach(doc=>{
+                    addtran=`
+                    <tr>
+                        <th scope="row">${doc.idHash}</th>
+                        <td>${doc.timestamp}</td>
+                        <td>${doc.signature}</td>
+                    </tr>
+                    `
+                    document.getElementById('TranscationTable').insertAdjacentHTML('beforeend', addtran);
+
+                })
+
+            }
+
+
+
+            function showBlockchain(){
+                document.getElementById('BlockChain').style.display="block";
+                document.getElementById('Block').style.display="none";
+            }
+    </script>
+
+
+
+</html>

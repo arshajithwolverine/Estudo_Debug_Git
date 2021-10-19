@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <link rel="apple-touch-icon" sizes="76x76" href="apple-icon.png">
+    <link rel="icon" type="image/png" href="apple-icon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>
+      Reciept
+    </title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no" name="viewport">
+    <!--     Fonts and icons     -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  
+  <!-- Optional theme -->
+  
+  <!-- Latest compiled and minified JavaScript -->
+  <script defer src="/__/firebase/7.7.0/firebase-app.js"></script>
+  <script defer src="/__/firebase/7.7.0/firebase-firestore.js"></script>
+  <script defer src="/__/firebase/init.js"></script>
+  
+
+</head>
+  
+  <body class="container-fluid">
+        <div id="notloader" >
+        
+          <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 ">
+              <div class="row">
+                <div style="margin-left:2%;width:60%;">
+                  <br>
+                  <img src="wel.svg" height="60" style="width: 60%;">
+                  <br>
+                  <br>
+                </div>
+                
+              </div>
+                <div class="text-center">
+                  <h1 style="color: slategrey;"><b>Opps..Your</b></h1>
+                  <h1 style="color: slategrey;"><b>payment failed</b></h1>
+
+                  <br>
+                  <br>
+                    <h4>Not to worry. Try again later or contact support.</h4>
+                </div>
+                <div>
+                    
+                    
+                    
+                  
+                  <br>
+                  <br>
+                  
+            </div>
+            
+          </div>
+
+        <footer class="footer">
+          <div class="col-md-3"></div>
+          <div class="container-fluid col-md-6 text-center">
+            <div class="row">
+              <div>
+                <button type="submit" class="btn btn-primary btn-round" style="width: 50%;" onclick="goingback()">Go Back</button>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3"></div>
+          <br>
+        </footer>
+          </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                app = firebase.app();
+                console.log(app);
+            })
+
+           
+            function goingback(){
+                invokeCSharpAction("fail");
+            }
+        </script>
+  
+  </body></html>
